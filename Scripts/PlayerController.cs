@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour {
 
     void Awake() {
         sr = GetComponent<SpriteRenderer>();
+        // TAG: Player
+        gameObject.name = "Player";
     }
 
     void FixedUpdate() {
