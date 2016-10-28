@@ -20,7 +20,7 @@ public class CameraController : MonoBehaviour {
         gameObject.name = "Camera";
     }
 
-    void Update() {
+    void LateUpdate() {
         transform.position = player.transform.position + relativePos;
     }
 }
