@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour {
         sr = GetComponent<SpriteRenderer>();
     }
 
-    void Update() {
+    void FixedUpdate() {
         Vector3 moveDir = new Vector3(
             Input.GetAxis("Horizontal"),
             Input.GetAxis("Vertical"),
