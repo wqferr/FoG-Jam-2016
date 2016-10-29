@@ -51,14 +51,10 @@ public class ScreenFader : MonoBehaviour {
             FindObjectsOfType(typeof(SpawnPoint)) as SpawnPoint[];
 
         if (spawnPoints.Length > 0){
-
             Random rnd = new Random();
-            int i = (int)Random.value * spawnPoints.Length;
-            i %= spawnPoints.Length;
-            Transform bixo = null;
-            
-            // TODO select bixo
-            spawnPoints[i].Spawn(bixo);
+            int i = (int) (Random.NextDouble()*spawnPoints.Length);
+            SpawnPoint spawner = spawnPoints[i];
+            spawner.SpawnRandomBixo();
         }
     }
 
