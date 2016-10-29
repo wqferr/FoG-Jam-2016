@@ -10,8 +10,6 @@ public class PlayerController : MonoBehaviour {
 
     public float speed = 0;
 
-    private float scale;
-
     public Sprite[] sprites = new Sprite[5];
 
     public Interactable interactable = null;
@@ -20,7 +18,6 @@ public class PlayerController : MonoBehaviour {
 
     void Awake() {
         sr = GetComponent<SpriteRenderer>();
-        scale = transform.localScale.x;
         // TAG: Player
         gameObject.name = "Player";
     }
@@ -61,17 +58,9 @@ public class PlayerController : MonoBehaviour {
             }
 
             if (moveDir.x < 0) {
-                transform.localScale = new Vector3(
-                    -scale,
-                    transform.localScale.y,
-                    1
-                );
+                sr.flipX = true;
             } else {
-                transform.localScale = new Vector3(
-                    scale,
-                    transform.localScale.y,
-                    1
-                );
+                sr.flipX = false;
             }
         }
     }
