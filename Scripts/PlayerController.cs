@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour {
         ).normalized;
 
         transform.Translate(moveDir * speed);
-        // UpdateSprites(moveDir);
+        UpdateSprites(moveDir);
     }
 
     void Update() {
