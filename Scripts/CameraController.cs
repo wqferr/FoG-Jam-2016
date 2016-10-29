@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
 
-    private Vector3 relativePos = null;
+    public float cameraMaxSpeed = 2;
+    public float cameraDistDeaccelerate = 5;
+
     private GameObject player = null;
 
     void Awake() {
@@ -11,16 +13,18 @@ public class CameraController : MonoBehaviour {
 
         if (pc) {
             player = pc.gameObject;
-            relativePos = transform.position - player.transform.position;
         } else {
             Debug.Log("Não tem jogador nessa porra.");
         }
 
-        // TAG: Camera
-        gameObject.name = "Camera";
+        // TAG: MainCamera
+        gameObject.name = "MainCamera";
+        gameObject.layer = 8;
     }
 
     void LateUpdate() {
-        transform.position = player.transform.position + relativePos;
+        Vector3 move = player.transform.position - transform.position;
+        move *= move.magnitude / cameraDistDeaccelerate;
+        move = Vector3.ClampMagnitude(move, cameraMaxSpeed);
     }
 }
