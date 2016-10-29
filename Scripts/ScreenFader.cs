@@ -16,9 +16,13 @@ public class ScreenFader : MonoBehaviour {
     public float timer = 5.0f;
     public bool isFading = false;
 
+    public GameObject[] bixos;
 
     void Awake() {
-        FadeImg.rectTransform.localScale = new Vector2(Screen.width, Screen.height);
+        FadeImg.rectTransform.localScale = new Vector2(
+            Screen.width,
+            Screen.height
+        );
     }
 
     void Update() {
@@ -32,7 +36,7 @@ public class ScreenFader : MonoBehaviour {
             // start fade
             StartCoroutine("FadeRoutine");
 
-            /* Chamar funaçoq's ue faezm cozais uando ipsca */
+            SpawnBixo();
         }
 
         if ((timer <= -1.3f) && isFading){
@@ -42,14 +46,31 @@ public class ScreenFader : MonoBehaviour {
         }
     }
 
+    void SpawnBixo() {
+        SpawnPoint[] spawnPoints =
+            FindObjectsOfType(typeof(SpawnPoint)) as SpawnPoint[];
+        Random rnd = new Random();
+        int i = rnd.Next(spawnPoints.Length);
+        Transform bixo = null;
+        // TODO select bixo
+        spawnPoints[i].Spawn(bixo);
+    }
 
     void FadeOut() {
-        FadeImg.color = Color.Lerp(FadeImg.color, Color.clear, fadeSpeed*Time.deltaTime);
+        FadeImg.color = Color.Lerp(
+            FadeImg.color,
+            Color.clear,
+            fadeSpeed*Time.deltaTime
+        );
     }
 
 
     void FadeIn() {
-        FadeImg.color = Color.Lerp(FadeImg.color, Color.black, fadeSpeed*Time.deltaTime);
+        FadeImg.color = Color.Lerp(
+            FadeImg.color,
+            Color.black,
+            fadeSpeed*Time.deltaTime
+        );
     }
 
 
@@ -64,7 +85,6 @@ public class ScreenFader : MonoBehaviour {
 
             isFading = false;
             timer = START_TIMER - Random.Range(0f, 3f);
-
         }
     }
 
