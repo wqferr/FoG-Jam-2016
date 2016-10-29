@@ -52,7 +52,7 @@ public class ScreenFader : MonoBehaviour {
 
         if (spawnPoints.Length > 0){
             Random rnd = new Random();
-            int i = (int) (Random.NextDouble()*spawnPoints.Length);
+            int i = (int) (Random.value * (spawnPoints.Length-1));
             SpawnPoint spawner = spawnPoints[i];
             spawner.SpawnRandomBixo();
         }
