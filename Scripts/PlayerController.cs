@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour {
 
     public float speed = 0;
 
-    private readonly float scale;
+    private float scale;
 
     public Sprite[] sprites = new Sprite[5];
 
@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour {
 
     void Awake() {
         sr = GetComponent<SpriteRenderer>();
-        scale = transform.scale.x;
+        scale = transform.localScale.x;
         // TAG: Player
         gameObject.name = "Player";
     }
@@ -61,9 +61,17 @@ public class PlayerController : MonoBehaviour {
             }
 
             if (moveDir.x < 0) {
-                transform.scale.x = -scale;
+                transform.localScale = new Vector3(
+                    -scale,
+                    transform.localScale.y,
+                    1
+                );
             } else {
-                transform.scale.x = scale;
+                transform.localScale = new Vector3(
+                    scale,
+                    transform.localScale.y,
+                    1
+                );
             }
         }
     }
