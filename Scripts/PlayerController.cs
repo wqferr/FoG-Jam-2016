@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour {
 
     public float speed = 0;
 
-    public Sprite[] sprites = new Sprite[5];
+    public Sprite[] sprites = new Sprite[8];
 
     public Interactable interactable = null;
 
