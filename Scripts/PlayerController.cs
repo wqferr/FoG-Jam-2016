@@ -52,6 +52,8 @@ public class PlayerController : MonoBehaviour {
                 sr.sprite = sprites[SPR_UR];
             } else if (moveDir.y < 0) {
                 sr.sprite = sprites[SPR_DR];
+            } else {
+                sr.sprite = sprites[SPR_R];
             }
 
             if (moveDir.x < 0) {
