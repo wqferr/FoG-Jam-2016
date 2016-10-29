@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour {
             0
         ).normalized;
 
-        transfrom.Translate(moveDir * speed);
+        transform.Translate(moveDir * speed);
         // TODO update sprite
     }
 
