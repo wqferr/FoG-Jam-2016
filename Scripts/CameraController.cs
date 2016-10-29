@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
 
-    public float cameraMaxSpeed = 2;
-    public float cameraDistDeaccelerate = 5;
+    public float cameraMaxSpeed;
+    public float cameraDistDeaccelerate;
 
     private GameObject player = null;
 
@@ -22,11 +22,11 @@ public class CameraController : MonoBehaviour {
         gameObject.layer = 8;
     }
 
-    void LateUpdate() {
+    void FixedUpdate() {
         Vector3 move = player.transform.position - transform.position;
         move.z = 0;
-        move *= cameraMaxSpeed * (move.magnitude / cameraDistDeaccelerate);
-        move = Vector3.ClampMagnitude(move, cameraMaxSpeed);
-        transform.translate(move);
+        float c = Mathf.Clamp01(move.magnitude / cameraDistDeaccelerate);
+        move *= c*(1.1f-c)*cameraMaxSpeed;
+        transform.Translate(move);
     }
 }
