@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void OnTriggerExit2D(Collider2D col) {
-        if (col.gameObject == interactable) {
+        if (col.gameObject.GetComponent<Interactable>() == interactable) {
             interactable = null;
         }
     }
