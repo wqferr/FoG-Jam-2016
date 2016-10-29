@@ -2,16 +2,20 @@ using UnityEngine;
 
 public class Door : Interactable {
 
-    private Collider2D col;
+    private GameObject col;
+    private int state = 0;
+    public Sprite[] sprites = new Sprite[2];
+    private SpriteRenderer sr;
 
     void Awake() {
-        GameObject ch = GetChild(0);
-        col = ch.GetComponent<Collider2D>();
+        col = transform.GetChild(0).gameObject;
+        sr = GetComponent<SpriteRenderer>();
     }
 
-    public void OnInteract() {
+    public override void OnInteract() {
         col.SetActive(!col.activeSelf);
-        // TODO swap sprites
+        state = (state + 1) % 2;
+        sr.sprite = sprites[state];
     }
 
 }

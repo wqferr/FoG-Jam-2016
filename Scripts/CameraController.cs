@@ -26,7 +26,7 @@ public class CameraController : MonoBehaviour {
         Vector3 move = player.transform.position - transform.position;
         move.z = 0;
         float c = Mathf.Clamp01(move.magnitude / cameraDistDeaccelerate);
-        move *= c*(1.1f-c)*cameraMaxSpeed;
+        move *= c*(1.15f-c)*cameraMaxSpeed;
         transform.Translate(move);
     }
 }
