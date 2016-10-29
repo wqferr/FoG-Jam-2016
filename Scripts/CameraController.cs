@@ -6,8 +6,8 @@ public class CameraController : MonoBehaviour {
     private GameObject player = null;
 
     void Awake() {
-        PlayerController pc =
-                (PlayerController) FindObjectOfType(typeof(PlayerController));
+        PlayerController pc = FindObjectOfType(typeof(PlayerController))
+                                                        as PlayerController;
 
         if (pc) {
             player = pc.gameObject;
