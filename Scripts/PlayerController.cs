@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour {
 
     public Sprite[] sprites = new Sprite[5];
 
+    public Interactable interactable = null;
+
     private SpriteRenderer sr;
 
     void Awake() {
@@ -28,10 +30,15 @@ public class PlayerController : MonoBehaviour {
         ).normalized;
 
         transform.Translate(moveDir * speed);
-        // TODO update sprite
+        // UpdateSprites(moveDir);
     }
 
-    private void updateSprites(Vector3 moveDir) {
+    void Update() {
+        if (Input.GetButtonDown("Fire1") && interactable != null)
+            interactable.OnInteract();
+    }
+
+    private void UpdateSprites(Vector3 moveDir) {
         if (moveDir.x == 0) {
             // Stopped horizontally
             if (moveDir.y > 0) {
@@ -52,6 +59,18 @@ public class PlayerController : MonoBehaviour {
             } else {
                 sr.flipX = false;
             }
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D col) {
+        if (col.gameObject.CompareTag("Interactable")) {
+            interactable = col.gameObject.GetComponent<Interactable>();
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D col) {
+        if (col.gameObject == interactable) {
+            interactable = null;
         }
     }
 }
