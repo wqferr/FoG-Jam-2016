@@ -7,6 +7,9 @@ public class PlayerController : MonoBehaviour {
     public const int SPR_R = 2;
     public const int SPR_DR = 3;
     public const int SPR_D = 4;
+    public const int SPR_DL = 5;
+    public const int SPR_L = 6;
+    public const int SPR_UL = 7;
 
     public float speed = 0;
 
@@ -41,27 +44,30 @@ public class PlayerController : MonoBehaviour {
 
     private void UpdateSprites(Vector3 moveDir) {
         if (moveDir.x == 0) {
-            // Stopped horizontally
-            if (moveDir.y > 0) {
-                sr.sprite = sprites[SPR_U];
-            } else if (moveDir.y < 0) {
-                sr.sprite = sprites[SPR_D];
-            }
-        } else {
-            // Moving horizontally
-            if (moveDir.y > 0) {
-                sr.sprite = sprites[SPR_UR];
-            } else if (moveDir.y < 0) {
-                sr.sprite = sprites[SPR_DR];
-            } else {
-                sr.sprite = sprites[SPR_R];
-            }
 
-            if (moveDir.x < 0) {
-                sr.flipX = true;
-            } else {
-                sr.flipX = false;
-            }
+            if (moveDir.y > 0)
+                sr.sprite = sprites[SPR_U];
+            else if (moveDir.y < 0)
+                sr.sprite = sprites[SPR_D];
+
+        } else if (moveDir.x > 0) {
+
+            if (moveDir.y > 0)
+                sr.sprite = sprites[SPR_UR];
+            else if (moveDir.y == 0)
+                sr.sprite = sprites[SPR_R];
+            else
+                sr.sprite = sprites[SPR_DR];
+
+        } else {
+
+            if (moveDir.y < 0)
+                sr.sprite = sprites[SPR_DL];
+            else if (moveDir.y == 0)
+                sr.sprite = sprites[SPR_L];
+            else
+                sr.sprite = sprites[SPR_UL];
+
         }
     }
 
