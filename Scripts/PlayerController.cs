@@ -34,8 +34,9 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Update() {
-        if (Input.GetButtonDown("Fire1") && interactable != null)
+        if (Input.GetButtonDown("Fire1") && interactable != null) {
             interactable.OnInteract();
+        }
     }
 
     private void UpdateSprites(Vector3 moveDir) {
