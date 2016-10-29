@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour {
     public Sprite[] sprites = new Sprite[5];
 
     public Interactable interactable = null;
+    public Texture normalMap;
 
     private SpriteRenderer sr;
 
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour {
         sr = GetComponent<SpriteRenderer>();
         // TAG: Player
         gameObject.name = "Player";
+        sr.material.SetTexture("_BumpMap", normalMap);
     }
 
     void FixedUpdate() {

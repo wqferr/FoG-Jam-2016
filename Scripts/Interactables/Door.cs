@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Door : Interactable {
 
@@ -17,5 +18,4 @@ public class Door : Interactable {
         state = (state + 1) % 2;
         sr.sprite = sprites[state];
     }
-
 }
