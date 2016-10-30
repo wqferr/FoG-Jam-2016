@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour {
 
             if (moveDir.x > 0)
                 sr.flipX = false;
-            else if (moveDir.x < 0)
+            else
                 sr.flipX = true;
         }
     }
