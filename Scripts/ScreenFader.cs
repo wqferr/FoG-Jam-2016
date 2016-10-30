@@ -23,6 +23,7 @@ public class ScreenFader : MonoBehaviour {
             Screen.width,
             Screen.height
         );
+        stop = false;
     }
 
     void Update() {
